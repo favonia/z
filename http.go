@@ -27,7 +27,7 @@ func New(id string, secret string) *Handle {
 	}
 }
 
-func (h *Handle) Do(ctx context.Context, reqs Requests) (Responses, error) {
+func (h *Handle) Do(ctx context.Context, reqs []Request) ([]Response, error) {
 	payload := jwt.New()
 	if err := payload.Set("urls", reqs); err != nil {
 		return nil, errors.Wrapf(err, "failed to prepare the jwt payload")
@@ -51,7 +51,7 @@ func (h *Handle) Do(ctx context.Context, reqs Requests) (Responses, error) {
 	}
 	defer resp.Body.Close()
 
-	var rawRes rawResponses
+	var rawRes []rawResponse
 	if err = json.NewDecoder(resp.Body).Decode(&rawRes); err != nil {
 		return nil, errors.Wrapf(err, "failed to decode the HTTP response")
 	}

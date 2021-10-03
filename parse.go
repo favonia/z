@@ -43,8 +43,8 @@ func parseRawResult(raw rawResult) (Result, error) {
 	}
 }
 
-func parseRawResponses(raw rawResponses) (Responses, error) {
-	res := make(Responses, len(raw))
+func parseRawResponses(raw []rawResponse) ([]Response, error) {
+	res := make([]Response, len(raw))
 	for i, r := range raw {
 		result, err := parseRawResult(r.Result)
 		if err != nil {
