@@ -1,3 +1,6 @@
+/*
+Package zink implements the functions to access z.umn.edu.
+*/
 package zink
 
 import (
@@ -11,6 +14,7 @@ import (
 	"github.com/pkg/errors"
 )
 
+// Handle holds the access ID and secret key.
 type Handle struct {
 	AccessID    string
 	SecretKey   string
@@ -19,6 +23,7 @@ type Handle struct {
 
 const DefaultAccessPoint = "https://z.umn.edu/api/v1/urls"
 
+// New creates a new Handle.
 func New(id string, secret string) *Handle {
 	return &Handle{
 		AccessID:    id,
@@ -27,7 +32,8 @@ func New(id string, secret string) *Handle {
 	}
 }
 
-func (h *Handle) Do(ctx context.Context, reqs []Request) ([]Response, error) {
+// Do sends the requets to the access point.
+func (h *Handle) Do(ctx context.Context, reqs ...Request) ([]Response, error) {
 	payload := jwt.New()
 	if err := payload.Set("urls", reqs); err != nil {
 		return nil, errors.Wrapf(err, "failed to prepare the jwt payload")

@@ -16,13 +16,9 @@ type rawResponse struct {
 	Result rawResult `json:"result"`
 }
 
-type ResultSuccess struct {
-	Message string
-}
+type ResultSuccess string
 
-type ResultError struct {
-	Message []string
-}
+type ResultError []string
 
 type Result interface{}
 

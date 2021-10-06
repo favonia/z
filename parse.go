@@ -16,9 +16,7 @@ func parseRawResult(raw rawResult) (Result, error) {
 		if !ok {
 			return nil, errors.Wrapf(errIllformedMessage, "failed to parse %v", raw.Message)
 		}
-		return &ResultSuccess{
-			Message: message,
-		}, nil
+		return ResultSuccess(message), nil
 
 	case "error":
 		rawMessage, ok := raw.Message.([]interface{})
@@ -34,9 +32,7 @@ func parseRawResult(raw rawResult) (Result, error) {
 			}
 		}
 
-		return &ResultError{
-			Message: message,
-		}, nil
+		return ResultError(message), nil
 
 	default:
 		return nil, errors.Wrapf(errUnexpectedStatus, "failed to parse %v", raw.Status)
