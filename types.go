@@ -6,10 +6,6 @@ type Request struct {
 	Collection *string `json:"collection,omitempty"`
 }
 
-type Requests = []Request
-
-type Status string
-
 type rawResult struct {
 	Status  string      `json:"status"`
 	Message interface{} `json:"message"`
@@ -20,15 +16,9 @@ type rawResponse struct {
 	Result rawResult `json:"result"`
 }
 
-type rawResponses = []rawResponse
+type ResultSuccess string
 
-type ResultSuccess struct {
-	Message string
-}
-
-type ResultError struct {
-	Message []string
-}
+type ResultError []string
 
 type Result interface{}
 
@@ -36,5 +26,3 @@ type Response struct {
 	Request
 	Result Result
 }
-
-type Responses = []Response
