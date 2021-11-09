@@ -3,7 +3,7 @@ module github.com/favonia/zink
 go 1.17
 
 require (
-	github.com/lestrrat-go/jwx v1.2.9
+	github.com/lestrrat-go/jwx v1.2.10
 	github.com/pkg/errors v0.9.1
 )
 
