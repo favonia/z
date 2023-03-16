@@ -1,3 +1,9 @@
+# 🗃️ Archive Notice
+
+No longer under development until further notice
+
+---
+
 # 🔗 zink
 
 [![Go Reference](https://pkg.go.dev/badge/github.com/favonia/zink.svg)](https://pkg.go.dev/github.com/favonia/zink)
